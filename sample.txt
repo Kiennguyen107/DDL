@@ -1,0 +1,14 @@
+SELECT c.city, SUM(s.quantity * p.price) AS city_revenue
+FROM sales_123456 s
+JOIN product_123456 p ON s.product_id = p.product_id
+JOIN customer_123456 c ON s.customer_id = c.customer_id
+GROUP BY c.city;
+
+
+SELECT c.customer_id, c.name, SUM(s.quantity * p.price) AS total_spent
+FROM sales_123456 s
+JOIN product_123456 p ON s.product_id = p.product_id
+JOIN customer_123456 c ON s.customer_id = c.customer_id
+GROUP BY c.customer_id, c.name
+ORDER BY total_spent DESC
+LIMIT 1;
